@@ -1,96 +1,273 @@
 ﻿@{
     ViewData["Title"] = "Privacy Policy";
 }
-@*<h1>@ViewData["Title"]</h1>*@
+
 <style>
-    .tr-style {
-        border-top: 1px solid #d7d7d7;
-        border-bottom: 1px solid #d7d7d7;
+    input[type=checkbox] + label {
+        display: block;
+        /*margin: 0.2em;*/
+        cursor: pointer;
+        /* padding: 0.2em;*/
     }
 
-    .th-style {
-        padding: 10px;
-        background-color: #efefef;
+    input[type=checkbox] {
+        display: none;
     }
 
-    .card-text {
-        margin-bottom: 10px;
-    }
+        input[type=checkbox] + label:before {
+            content: "\2714";
+            border: 0.1em solid #000;
+            border-radius: 0.2em;
+            display: inline-block;
+            width: 1.4em;
+            height: 1.5em;
+            padding-left: 0.2em;
+            padding-bottom: 0.3em;
+            margin-right: 0.2em;
+            vertical-align: bottom;
+            color: transparent;
+            transition: .2s;
+        }
 
-    .td-style {
-        padding: 5px 0px 5px 5px;
-    }
+        input[type=checkbox] + label:active:before {
+            transform: scale(0);
+        }
 
-    .card-body {
-        padding: 0.35rem;
-    }
+        input[type=checkbox]:checked + label:before {
+            background-color: #8e0d0d;
+            border-color: #8e0d0d;
+            color: #fff;
+        }
 
-    .flex-container > div {
-        margin-left: 10px;
-    }
+        input[type=checkbox]:disabled + label:before {
+            transform: scale(1);
+            border-color: #aaa;
+        }
 
-    .add-on-board-btn {
-        margin-bottom: 10px;
-    }
+        input[type=checkbox]:checked:disabled + label:before {
+            transform: scale(1);
+            background-color: #bfb;
+            border-color: #bfb;
+        }
+        label{
+            font-size: 15px;
+
+        }
 </style>
 <div class="row">
     <div class="col-md-12">
-        <div class="card border-secondary mb-3">
-            <div class="card-header">What is a CPU ?</div>
-            <div class="card-body text-secondary">
-                <h5 class="card-title">Secondary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">CPU</li>
+            </ol>
+        </nav>
+
+
+        <div class="jumbotron">
+            <h4>Short brief</h4>
+            <div class="">
+                <h5 class="card-title">What is CPU?</h5>
+                <p class="card-text">
+                    A central processing unit (CPU), also called a central processor or main processor, is the electronic circuitry within a computer that carries out the instructions of a computer program by performing the basic arithmetic, logic, controlling, and input/output (I/O) operations specified by the instructions. The computer industry has used the term "central processing unit" at least since the early 1960s.[1] Traditionally, the term "CPU" refers to a processor, more specifically to its processing unit and control unit (CU), distinguishing these core elements of a computer from external components such as main memory and I/O circuitry.[2]
+
+                    The form, design, and implementation of CPUs have changed over the course of their history, but their fundamental operation remains almost unchanged. Principal components of a CPU include the arithmetic logic unit (ALU) that performs arithmetic and logic operations, processor registers that supply operands to the ALU and store the results of ALU operations and a control unit that orchestrates the fetching (from memory) and execution of instructions by directing the coordinated operations of the ALU, registers and other components.
+
+                    Most modern CPUs are microprocessors, meaning they are contained on a single integrated circuit (IC) chip. An IC that contains a CPU may also contain memory, peripheral interfaces, and other components of a computer; such integrated devices are variously called microcontrollers or systems on a chip (SoC). Some computers employ a multi-core processor, which is a single chip containing two or more CPUs called "cores"; in that context, one can speak of such single chips as "sockets".
+                </p>
             </div>
         </div>
     </div>
     <div class="col-md-2">
-        <p>Vendor</p>
+        
+        <div>
+            <h5 style="border-bottom: 1px solid black">Vendor</h5>
+            <input type="checkbox" id="fruit1" name="fruit-1" value="Apple">
+            <label for="fruit1">
+                AMD
+                <span class="badge badge-dark pull-right"> 55</span>
+            </label>
+            <input type="checkbox" id="comp1" name="comp1" value="Apple">
+            <label for="comp1">
+                INTEL
+                <span class="badge badge-dark pull-right"> 105</span>
+            </label>
+        </div>
+        <br />
+        <div>
+            <h5 style="border-bottom: 1px solid black">CPU model</h5>
+            <input type="checkbox" id="type2" name="type2" value="Apple">
+            <label for="type2">
+                i5
+                <span class="badge badge-dark pull-right"> 55</span>
+            </label>
+            <input type="checkbox" id="type3" name="type3" value="Apple">
+            <label for="type3">
+                i3
+                <span class="badge badge-dark pull-right"> 105</span>
+            </label>
+        </div>
     </div>
 
-    <div class="col-md-10 flex-container" style="display: flex; flex-direction: row">
-        <div class="card" style="width: 33.333%;">
-            <img src="~/Upload/Images/i7procesor.png" style="padding: 10px" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Intel Core i7-8700K Processor 3.7GHz 8.0GT/s 12MB LGA 1151 CPU</h5>
-                <div class="card-text">
-                    <table class="w-100">
-                        <tr class="tr-style">
-                            <th class="th-style">Proccessor:</th>
-                            <td class="td-style">Intel Core i7-8700K</td>
-                        </tr>
-                        <tr class="tr-style">
-                            <th class="th-style">Clock:</th>
-                            <td class="td-style">3.7GHz</td>
-                        </tr>
-                        <tr class="tr-style">
-                            <th class="th-style">Generation:</th>
-                            <td class="td-style">8</td>
-                        </tr>
-                        <tr class="tr-style">
-                            <th class="th-style">Socket:</th>
-                            <td class="td-style">1151</td>
-                        </tr>
-                        <tr class="tr-style">
-                            <th class="th-style">Prise ~</th>
-                            <td class="td-style">250 $</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="w-100 text-center">
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Add on board" class="btn btn-outline-dark add-on-board-btn w-20" style="border-radius: 50%">
-                        <i class="fa fa-plus "></i>
-                    </a>
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Quick preview" class="btn btn-outline-primary add-on-board-btn w-20" style="border-radius: 50%">
-                        <i class="fa fa-search"></i>
-                    </a>
+    <div class="col-md-10 flex-container" @*style="display: flex; flex-direction: row"*@>
+        <div style="background-color: #e9ecef; padding: 15px; border-radius: 5px; margin-bottom: 10px">
+            <label for="filter">Filter By <span class="fa fa-filter"></span></label>
+            <select class="form-control d-inline-block">
+                <option selected>Chose</option>
+                <option>By prise Low to High</option>
+                <option>By prise High to Low</option>
+            </select>
+        </div>
+        <div class="card-group">
+            <div class="card" >
+                <img src="~/Upload/Images/i7procesor.png" style="padding: 10px" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Intel Core i7-8700K Processor 3.7GHz 8.0GT/s 12MB LGA 1151 CPU</h5>
+                    <div class="card-text">
+                        <table class="w-100">
+                            <tr class="tr-style">
+                                <th class="th-style">Proccessor:</th>
+                                <td class="td-style">Intel Core i7-8700K</td>
+                            </tr>
+                            <tr class="tr-style">
+                                <th class="th-style">Clock:</th>
+                                <td class="td-style">3.7GHz</td>
+                            </tr>
+                            <tr class="tr-style">
+                                <th class="th-style">Generation:</th>
+                                <td class="td-style">8</td>
+                            </tr>
+                            <tr class="tr-style">
+                                <th class="th-style">Socket: <span class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Socket type is important when you pick CPU" style="color: dodgerblue"></span></th>
+                                <td class="td-style">1151</td>
+                            </tr>
+                            <tr class="tr-style">
+                                <th class="th-style">Prise ~</th>
+                                <td class="td-style">250 $</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="w-100 text-center">
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Add on board" class="btn btn-outline-dark add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-plus "></i>
+                        </a>
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Quick preview" class="btn btn-outline-primary add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-search"></i>
+                        </a>
 
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Full preview" class="btn btn-outline-danger add-on-board-btn w-20" style="border-radius: 50%">
-                        <i class="fa fa-list-alt"></i>
-                    </a>
-                </div>
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Full preview" class="btn btn-outline-danger add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-list-alt"></i>
+                        </a>
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Compare" class="btn btn-outline-warning add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-exchange"></i>
+                        </a>
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Add to favourites" class="btn btn-outline-dark add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-heart"></i>
+                        </a>
+                    </div>
 
+                </div>
+            </div>
+            <div class="card">
+                <img src="~/Upload/Images/i7procesor.png" style="padding: 10px" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Intel Core i7-8700K Processor 3.7GHz 8.0GT/s 12MB LGA 1151 CPU</h5>
+                    <div class="card-text">
+                        <table class="w-100">
+                            <tr class="tr-style">
+                                <th class="th-style">Proccessor:</th>
+                                <td class="td-style">Intel Core i7-8700K</td>
+                            </tr>
+                            <tr class="tr-style">
+                                <th class="th-style">Clock:</th>
+                                <td class="td-style">3.7GHz</td>
+                            </tr>
+                            <tr class="tr-style">
+                                <th class="th-style">Generation:</th>
+                                <td class="td-style">8</td>
+                            </tr>
+                            <tr class="tr-style">
+                                <th class="th-style">Socket: <span class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Socket type is important when you pick CPU" style="color: dodgerblue"></span></th>
+                                <td class="td-style">1151</td>
+                            </tr>
+                            <tr class="tr-style">
+                                <th class="th-style">Prise ~</th>
+                                <td class="td-style">250 $</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="w-100 text-center">
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Add on board" class="btn btn-outline-dark add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-plus "></i>
+                        </a>
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Quick preview" class="btn btn-outline-primary add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-search"></i>
+                        </a>
+
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Full preview" class="btn btn-outline-danger add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-list-alt"></i>
+                        </a>
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Compare" class="btn btn-outline-warning add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-exchange"></i>
+                        </a>
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Add to favourites" class="btn btn-outline-dark add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-heart"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card" >
+                <img src="~/Upload/Images/i7procesor.png" style="padding: 10px" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Intel Core i7-8700K Processor 3.7GHz 8.0GT/s 12MB LGA 1151 CPU</h5>
+                    <div class="card-text">
+                        <table class="w-100">
+                            <tr class="tr-style">
+                                <th class="th-style">Proccessor:</th>
+                                <td class="td-style">Intel Core i7-8700K</td>
+                            </tr>
+                            <tr class="tr-style">
+                                <th class="th-style">Clock:</th>
+                                <td class="td-style">3.7GHz</td>
+                            </tr>
+                            <tr class="tr-style">
+                                <th class="th-style">Generation:</th>
+                                <td class="td-style">8</td>
+                            </tr>
+                            <tr class="tr-style">
+                                <th class="th-style">Socket: <span class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Socket type is important when you pick CPU" style="color: dodgerblue"></span></th>
+                                <td class="td-style">1151</td>
+                            </tr>
+                            <tr class="tr-style">
+                                <th class="th-style">Prise ~</th>
+                                <td class="td-style">250 $</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="w-100 text-center">
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Add on board" class="btn btn-outline-dark add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-plus "></i>
+                        </a>
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Quick preview" class="btn btn-outline-primary add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-search"></i>
+                        </a>
+
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Full preview" class="btn btn-outline-danger add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-list-alt"></i>
+                        </a>
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Compare" class="btn btn-outline-warning add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-exchange"></i>
+                        </a>
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Add to favourites" class="btn btn-outline-dark add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-heart"></i>
+                        </a>
+                    </div>
+
+                </div>
             </div>
         </div>
+        
       
     </div>
 </div>
