@@ -80,32 +80,49 @@
     </div>
     <div class="col-md-2">
         
-        <div>
-            <h5 style="border-bottom: 1px solid black">Vendor</h5>
-            <input type="checkbox" id="fruit1" name="fruit-1" value="Apple">
-            <label for="fruit1">
-                AMD
-                <span class="badge badge-dark pull-right"> 55</span>
-            </label>
-            <input type="checkbox" id="comp1" name="comp1" value="Apple">
-            <label for="comp1">
-                INTEL
-                <span class="badge badge-dark pull-right"> 105</span>
-            </label>
+        <div class="d-block">
+            <a onclick="rotFun(1)" class="btn  w-100 clearfix left-btn" style="border-bottom: 1px solid black; border-radius: 0px; padding-left: 0px; margin-bottom: 5px" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <i id="icon1" class="fa fa-chevron-down pull-left" style="padding: 5px;background-color: #f3f3f3;border-radius: 50%; transition: 0.3s"></i>
+                <h5 style=" display: inline-block">Vendor</h5>
+            </a>    
+            <div class="collapse show" id="collapseExample">
+                <div class="card card-body">
+                    <input type="checkbox" id="fruit1" name="fruit-1" value="Apple">
+                    <label for="fruit1">
+                        AMD
+                        <span class="badge badge-dark pull-right"> 55</span>
+                    </label>
+                    <input type="checkbox" id="comp1" name="comp1" value="Apple">
+                    <label for="comp1">
+                        INTEL
+                        <span class="badge badge-dark pull-right"> 105</span>
+                    </label>
+                </div>
+            </div>
+            
         </div>
         <br />
-        <div>
-            <h5 style="border-bottom: 1px solid black">CPU model</h5>
-            <input type="checkbox" id="type2" name="type2" value="Apple">
-            <label for="type2">
-                i5
-                <span class="badge badge-dark pull-right"> 55</span>
-            </label>
-            <input type="checkbox" id="type3" name="type3" value="Apple">
-            <label for="type3">
-                i3
-                <span class="badge badge-dark pull-right"> 105</span>
-            </label>
+        <div class="d-block">
+            <a onclick="rotFun(2)" class="btn  w-100 clearfix left-btn" style="border-bottom: 1px solid black; border-radius: 0px; padding-left: 0px; margin-bottom: 5px"
+               data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1">
+                <i id="icon2" class="fa fa-chevron-down pull-left" style="padding: 5px;background-color: #f3f3f3;border-radius: 50%; transition: 0.3s"></i>
+                <h5 style=" display: inline-block">CPU Model</h5>
+            </a>
+            <div class="collapse show" id="collapseExample1">
+                <div class="card card-body">
+                    <input type="checkbox" id="fruit2" name="fruit-2" value="Apple">
+                    <label for="fruit2">
+                        i3
+                        <span class="badge badge-dark pull-right"> 55</span>
+                    </label>
+                    <input type="checkbox" id="comp2" name="comp2" value="Apple">
+                    <label for="comp2">
+                        i5
+                        <span class="badge badge-dark pull-right"> 105</span>
+                    </label>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -276,5 +293,19 @@
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         });
+
+
+        function rotFun(id) {
+            var icon = $("#icon"+id).attr('class');
+           
+
+            if (icon.includes("left-btn-active")) {
+                $("#icon" + id).removeClass('left-btn-active');
+            }
+            else {
+                $("#icon" + id).addClass('left-btn-active');
+            }
+            
+        }
     </script>
 }

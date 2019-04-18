@@ -108,3 +108,19 @@ a:focus{
 a:active{
     color:#7d1515;
 }
+/*.btn-down-up:hover > .fa-angle-down::before {
+    content: "\f077";
+}*/
+
+.left-btn-active{
+    transform: rotate(180deg);
+    transition: 0.3s;
+
+}
+.left-btn:focus, .left-btn.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem white;
+}
+h5 {
+    font-size: 1.15rem;
+}
