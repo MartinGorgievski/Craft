@@ -53,6 +53,10 @@
             font-size: 15px;
 
         }
+    .card-custom{
+        border:0px;
+        padding:0px;
+    }
 </style>
 <div class="row">
     <div class="col-md-12">
@@ -73,7 +77,6 @@
 
                     The form, design, and implementation of CPUs have changed over the course of their history, but their fundamental operation remains almost unchanged. Principal components of a CPU include the arithmetic logic unit (ALU) that performs arithmetic and logic operations, processor registers that supply operands to the ALU and store the results of ALU operations and a control unit that orchestrates the fetching (from memory) and execution of instructions by directing the coordinated operations of the ALU, registers and other components.
 
-                    Most modern CPUs are microprocessors, meaning they are contained on a single integrated circuit (IC) chip. An IC that contains a CPU may also contain memory, peripheral interfaces, and other components of a computer; such integrated devices are variously called microcontrollers or systems on a chip (SoC). Some computers employ a multi-core processor, which is a single chip containing two or more CPUs called "cores"; in that context, one can speak of such single chips as "sockets".
                 </p>
             </div>
         </div>
@@ -86,7 +89,7 @@
                 <h5 style=" display: inline-block">Vendor</h5>
             </a>    
             <div class="collapse show" id="collapseExample">
-                <div class="card card-body">
+                <div class="card card-body card-custom">
                     <input type="checkbox" id="fruit1" name="fruit-1" value="Apple">
                     <label for="fruit1">
                         AMD
@@ -109,7 +112,7 @@
                 <h5 style=" display: inline-block">CPU Model</h5>
             </a>
             <div class="collapse show" id="collapseExample1">
-                <div class="card card-body">
+                <div class="card card-body card-custom">
                     <input type="checkbox" id="fruit2" name="fruit-2" value="Apple">
                     <label for="fruit2">
                         i3
@@ -126,14 +129,20 @@
         </div>
     </div>
 
-    <div class="col-md-10 flex-container" @*style="display: flex; flex-direction: row"*@>
-        <div style="background-color: #e9ecef; padding: 15px; border-radius: 5px; margin-bottom: 10px">
-            <label for="filter">Filter By <span class="fa fa-filter"></span></label>
-            <select class="form-control d-inline-block">
-                <option selected>Chose</option>
-                <option>By prise Low to High</option>
-                <option>By prise High to Low</option>
-            </select>
+    <div class="col-md-10 flex-container">
+        <div class="row" style="background-color: #e9ecef; padding: 15px; border-radius: 5px; margin-bottom: 10px">
+            <div class="col-md-4" style="padding-left: 0px; padding-right: 0px">
+                <label for="filter">Filter By <span class="fa fa-filter"></span></label>
+                <select id="filter" name="filter" class="form-control d-inline-block">
+                    <option selected>Chose</option>
+                    <option>By prise Low to High</option>
+                    <option>By prise High to Low</option>
+                </select>
+            </div>
+            <div class="col-md-4" >
+                <label for="filter1">Search by CPU Name <span class="fa fa-search"></span></label>
+                <input name="filter1" class="form-control" placeholder="Name" />
+            </div>
         </div>
         <div class="card-group">
             <div class="card" >
