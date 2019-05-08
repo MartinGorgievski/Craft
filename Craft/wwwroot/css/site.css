@@ -124,3 +124,13 @@ a:active{
 h5 {
     font-size: 1.15rem;
 }
+.page-link {
+    color: #8e0d0d;
+    transition: 0.3s;
+}
+.page-link:hover{
+    color: white;
+    background-color: black;
+    transition: 0.3s;
+    border-color: black;
+}

@@ -130,7 +130,7 @@
     </div>
 
     <div class="col-md-10 flex-container">
-        <div class="row" style="background-color: #e9ecef; padding: 15px; border-radius: 5px; margin-bottom: 10px">
+        <div class="row" style="background-color: #e9ecef; padding: 15px; border-radius: 5px; margin-bottom: 10px; margin-right:0px; margin-left: 0px">
             
             <div class="col-md-4" style="padding-left: 0px; padding-right: 0px; ">
                 <label for="filter">Filter By <span class="fa fa-filter"></span></label>
@@ -145,7 +145,7 @@
                 <input name="filter1" class="form-control" placeholder="Name" />
             </div>
         </div>
-        <div class="card-group">
+        <div class="card-group" style="margin-left: 0px">
             <div class="card" >
                 <img src="~/Upload/Images/i7procesor.png" style="padding: 10px" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -295,8 +295,31 @@
             </div>
         </div>
         
-      
+        <br />
+        <div class="d-flex flex-row justify-content-center" >
+            <nav aria-label="Page navigation" >
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        
     </div>
+
+    
+   
 </div>
 @section Scripts{
     <script>
