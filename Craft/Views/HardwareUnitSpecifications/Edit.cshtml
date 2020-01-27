@@ -1,0 +1,47 @@
+﻿@model Craft.Models.HardwareUnitSpecification
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_CmsLayout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>HardwareUnitSpecification</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="AttributeValue" class="control-label"></label>
+                <input asp-for="AttributeValue" class="form-control" />
+                <span asp-validation-for="AttributeValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortInfo" class="control-label"></label>
+                <input asp-for="ShortInfo" class="form-control" />
+                <span asp-validation-for="ShortInfo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HardwareUnitId" class="control-label"></label>
+                <select asp-for="HardwareUnitId" class="form-control" asp-items="ViewBag.HardwareUnitId"></select>
+                <span asp-validation-for="HardwareUnitId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ComponentSpecificationId" class="control-label"></label>
+                <select asp-for="ComponentSpecificationId" class="form-control" asp-items="ViewBag.ComponentSpecificationId"></select>
+                <span asp-validation-for="ComponentSpecificationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

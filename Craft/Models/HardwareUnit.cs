@@ -7,13 +7,15 @@ namespace Craft.Models
 {
     public class HardwareUnit
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string ImageName { get; set; }
         public string Title { get; set; }
+        public bool Active { get; set; }
 
         public int HardwareComponentId { get; set; }
         public HardwareComponent HardwareComponent { get; set; }
 
-        public ICollection<ComponentSpecification> ComponentSpecifications { get; set; }
+        public ICollection<HardwareUnitSpecification> HardwareUnitSpecifications { get; set; }
+       
     }
 }

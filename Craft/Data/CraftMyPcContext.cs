@@ -22,6 +22,7 @@ namespace Craft.Data
         public DbSet<FilterComponent> FilterComponents { get; set; }
         public DbSet<HardwareComponent> HardwareComponents { get; set; }
         public DbSet<HardwareUnit> HardwareUnits { get; set; }
+        public DbSet<HardwareUnitSpecification> HardwareUnitSpecification { get; set; }
 
     }
 }

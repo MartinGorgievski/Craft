@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Craft.Models.ComponentSpecification>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CmsLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AttributeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Primary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HardwareComponent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FilterComponent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComponentSpecificationCategory)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttributeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAdded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Primary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HardwareComponent.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FilterComponent.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComponentSpecificationCategory.ID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -9,10 +9,12 @@ namespace Craft.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public DateTime DateAdded { get; set; }
         public DateTime DateModified { get; set; }
 
+       
         public ICollection<ComponentSpecification> ComponentSpecifications { get; set; }
-        public ICollection<HardwareUnit> HardwareUnits { get; set; }
+       // public ICollection<HardwareUnit> HardwareUnits { get; set; }
     }
 }

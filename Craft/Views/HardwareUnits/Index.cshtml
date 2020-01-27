@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Craft.Models.HardwareUnit>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CmsLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-light table-striped">
+    <thead>
+        <tr>
+            <th>
+                Image
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Active
+            </th>
+            <th>
+                Type
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src="~/Upload/Images/@item.ImageName" style="width: 75px; display: block" />
+                @Html.DisplayFor(modelItem => item.ImageName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HardwareComponent.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

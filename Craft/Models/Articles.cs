@@ -11,6 +11,9 @@ namespace Craft.Models
         public string Title { get; set; }
         public string ImageName { get; set; }
         public string Descriprion { get; set; }
+        public string MetaDescription { get; set; }
+        public string MetaTitle { get; set; }
+        public string KeyWords { get; set; }
         public DateTime DateAdded { get; set; }
         public DateTime DateModified { get; set; }
         public string Author { get; set; }
