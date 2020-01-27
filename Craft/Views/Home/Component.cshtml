@@ -163,10 +163,13 @@
                             <table class="w-100">
                                 @foreach (var item1 in item.HardwareUnitSpecifications)
                                 {
-                                    <tr class="tr-style">
-                                        <th class="th-style">@*@item1.ComponentSpecification.AttributeName*@</th>
-                                        <td class="td-style">@item1.AttributeValue</td>
-                                    </tr>
+                                    if (item1.ComponentSpecification.Primary)
+                                    {
+                                        <tr class="tr-style">
+                                            <th class="th-style">@item1.ComponentSpecification.AttributeName</th>
+                                            <td class="td-style">@item1.AttributeValue</td>
+                                        </tr>
+                                    }
                                 }
                             </table>
                         </div>

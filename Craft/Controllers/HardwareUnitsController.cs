@@ -57,7 +57,7 @@ namespace Craft.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ImageName,Title,Active,HardwareComponentId")] HardwareUnit hardwareUnit)
+        public async Task<IActionResult> Create([Bind("Id,ImageName,Title,Active,UrlName,HardwareComponentId")] HardwareUnit hardwareUnit)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace Craft.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ImageName,Title,Active,HardwareComponentId")] HardwareUnit hardwareUnit)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ImageName,Title,Active,UrlName,HardwareComponentId")] HardwareUnit hardwareUnit)
         {
             if (id != hardwareUnit.Id)
             {

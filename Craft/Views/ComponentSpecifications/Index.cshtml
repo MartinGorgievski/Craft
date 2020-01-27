@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_CmsLayout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Hardware Specifications</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -47,13 +47,13 @@
                 @Html.DisplayFor(modelItem => item.Primary)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HardwareComponent.ID)
+                @Html.DisplayFor(modelItem => item.HardwareComponent.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FilterComponent.ID)
+                @Html.DisplayFor(modelItem => item.FilterComponent.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ComponentSpecificationCategory.ID)
+                @Html.DisplayFor(modelItem => item.ComponentSpecificationCategory.Name)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |

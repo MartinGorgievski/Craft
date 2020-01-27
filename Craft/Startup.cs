@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Craft.Data;
 using Microsoft.EntityFrameworkCore;
-
+using Craft.Services;
 namespace Craft
 {
     public class Startup
@@ -32,9 +32,11 @@ namespace Craft
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+           
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddTransient<IHardwareUnit, HardwareUnitServices>();
+            services.AddTransient<IHardwareComponent, HardwareComponentServices>();
 
             services.AddDbContext<CraftMyPcContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("LocalTestServer")));
