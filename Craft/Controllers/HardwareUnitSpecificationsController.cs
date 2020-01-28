@@ -50,9 +50,9 @@ namespace Craft.Controllers
         // GET: HardwareUnitSpecifications/Create
         public IActionResult Create()
         {
-            ViewData["ComponentSpecificationId"] = new SelectList(_context.ComponentSpecifications, "ID", "ID");
-            ViewData["FilterComponentId"] = new SelectList(_context.FilterComponents, "ID", "ID");
-            ViewData["HardwareUnitId"] = new SelectList(_context.HardwareUnits, "Id", "Id");
+            ViewData["ComponentSpecificationId"] = new SelectList(_context.ComponentSpecifications, "ID", "AttributeName");
+            ViewData["FilterComponentId"] = new SelectList(_context.FilterComponents, "ID", "Name");
+            ViewData["HardwareUnitId"] = new SelectList(_context.HardwareUnits, "Id", "Title");
             return View();
         }
 
@@ -69,9 +69,9 @@ namespace Craft.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ComponentSpecificationId"] = new SelectList(_context.ComponentSpecifications, "ID", "ID", hardwareUnitSpecification.ComponentSpecificationId);
-            ViewData["FilterComponentId"] = new SelectList(_context.FilterComponents, "ID", "ID", hardwareUnitSpecification.FilterComponentId);
-            ViewData["HardwareUnitId"] = new SelectList(_context.HardwareUnits, "Id", "Id", hardwareUnitSpecification.HardwareUnitId);
+            ViewData["ComponentSpecificationId"] = new SelectList(_context.ComponentSpecifications, "ID", "AttributeName", hardwareUnitSpecification.ComponentSpecificationId);
+            ViewData["FilterComponentId"] = new SelectList(_context.FilterComponents, "ID", "Name", hardwareUnitSpecification.FilterComponentId);
+            ViewData["HardwareUnitId"] = new SelectList(_context.HardwareUnits, "Id", "Title", hardwareUnitSpecification.HardwareUnitId);
             return View(hardwareUnitSpecification);
         }
 
@@ -88,9 +88,9 @@ namespace Craft.Controllers
             {
                 return NotFound();
             }
-            ViewData["ComponentSpecificationId"] = new SelectList(_context.ComponentSpecifications, "ID", "ID", hardwareUnitSpecification.ComponentSpecificationId);
-            ViewData["FilterComponentId"] = new SelectList(_context.FilterComponents, "ID", "ID", hardwareUnitSpecification.FilterComponentId);
-            ViewData["HardwareUnitId"] = new SelectList(_context.HardwareUnits, "Id", "Id", hardwareUnitSpecification.HardwareUnitId);
+            ViewData["ComponentSpecificationId"] = new SelectList(_context.ComponentSpecifications, "ID", "AttributeName", hardwareUnitSpecification.ComponentSpecificationId);
+            ViewData["FilterComponentId"] = new SelectList(_context.FilterComponents, "ID", "Name", hardwareUnitSpecification.FilterComponentId);
+            ViewData["HardwareUnitId"] = new SelectList(_context.HardwareUnits, "Id", "Title", hardwareUnitSpecification.HardwareUnitId);
             return View(hardwareUnitSpecification);
         }
 
@@ -126,9 +126,9 @@ namespace Craft.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ComponentSpecificationId"] = new SelectList(_context.ComponentSpecifications, "ID", "ID", hardwareUnitSpecification.ComponentSpecificationId);
-            ViewData["FilterComponentId"] = new SelectList(_context.FilterComponents, "ID", "ID", hardwareUnitSpecification.FilterComponentId);
-            ViewData["HardwareUnitId"] = new SelectList(_context.HardwareUnits, "Id", "Id", hardwareUnitSpecification.HardwareUnitId);
+            ViewData["ComponentSpecificationId"] = new SelectList(_context.ComponentSpecifications, "ID", "AttributeName", hardwareUnitSpecification.ComponentSpecificationId);
+            ViewData["FilterComponentId"] = new SelectList(_context.FilterComponents, "ID", "Name", hardwareUnitSpecification.FilterComponentId);
+            ViewData["HardwareUnitId"] = new SelectList(_context.HardwareUnits, "Id", "Title", hardwareUnitSpecification.HardwareUnitId);
             return View(hardwareUnitSpecification);
         }
 

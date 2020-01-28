@@ -1,8 +1,51 @@
-﻿
+﻿@model Craft.ViewModels.DetailProduct
 @{
     ViewData["Title"] = "DetailInformation";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>DetailInformation</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="text-center">@Model.HardwareUnit.Title</h2>
+        <hr />
+    </div>
+    <div class="col-md-4">
+        <img src="~/Upload/Images/@Model.HardwareUnit.ImageName" class="img-fluid img-thumbnail" />
+    </div>
+    <div class="col-md-8">
+        <table class="table table-striped">
+            <thead></thead>
+            <tbody>
+                @foreach (var item in Model.ComponentSpecificationCategory)
+                {
+                    <tr style="background-color:#272727;color:white;">
+                        <td>
+                            <b>@item.Name</b>
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                    foreach (var itemIn in item.ComponentSpecification)
+                    {
+
+                        foreach (var itemIIn in itemIn.HardwareUnitSpecifications)
+                        {
+                            <tr>
+                                <td>
+                                    @itemIn.AttributeName
+                                </td>
+                                <td>
+                                    @itemIIn.AttributeValue
+                                </td>
+                            </tr>
+                        }
+                    }
+                }      
+            </tbody>
+        </table>
+       
+    </div>
+</div>
 

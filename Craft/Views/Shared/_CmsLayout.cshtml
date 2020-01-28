@@ -15,6 +15,7 @@
               crossorigin="anonymous"
               integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" />
     </environment>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
@@ -58,6 +59,16 @@
             <a class="nav-link" asp-controller="ComponentSpecificationCategories" asp-action="Index">
                 <i class="fa fa-table"></i>
                 Component Specific. Cat.
+            </a>
+            <hr style="background-color: #717070; margin-top: 5px; margin-bottom: 5px" />
+            <a class="nav-link" asp-controller="Articles" asp-action="Index">
+                <i class="fa fa-table"></i>
+                Articles
+            </a>
+            <hr style="background-color: #717070; margin-top: 5px; margin-bottom: 5px" />
+            <a class="nav-link" asp-controller="CategoryNews" asp-action="Index">
+                <i class="fa fa-table"></i>
+                Category Articles
             </a>
             <hr style="background-color: #717070; margin-top: 5px; margin-bottom: 5px" />
         </div>
@@ -110,6 +121,13 @@
             document.getElementById("mySidebar").style.width = "0";
             document.getElementById("main").style.marginLeft = "0";
         }
+    </script>
+    <script src=" https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
     </script>
     @RenderSection("Scripts", required: false)
 </body>

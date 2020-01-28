@@ -49,8 +49,8 @@ namespace Craft.Controllers
         // GET: ComponentSpecifications/Create
         public IActionResult Create()
         {
-            ViewData["ComponentSpecificationCategoryId"] = new SelectList(_context.ComponentSpecificationCategories, "ID", "ID");
-            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "ID");
+            ViewData["ComponentSpecificationCategoryId"] = new SelectList(_context.ComponentSpecificationCategories, "ID", "Name");
+            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "Name");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace Craft.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ComponentSpecificationCategoryId"] = new SelectList(_context.ComponentSpecificationCategories, "ID", "ID", componentSpecification.ComponentSpecificationCategoryId);
-            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "ID", componentSpecification.HardwareComponentId);
+            ViewData["ComponentSpecificationCategoryId"] = new SelectList(_context.ComponentSpecificationCategories, "ID", "Name", componentSpecification.ComponentSpecificationCategoryId);
+            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "Name", componentSpecification.HardwareComponentId);
             return View(componentSpecification);
         }
 
@@ -85,8 +85,8 @@ namespace Craft.Controllers
             {
                 return NotFound();
             }
-            ViewData["ComponentSpecificationCategoryId"] = new SelectList(_context.ComponentSpecificationCategories, "ID", "ID", componentSpecification.ComponentSpecificationCategoryId);
-            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "ID", componentSpecification.HardwareComponentId);
+            ViewData["ComponentSpecificationCategoryId"] = new SelectList(_context.ComponentSpecificationCategories, "ID", "Name", componentSpecification.ComponentSpecificationCategoryId);
+            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "Name", componentSpecification.HardwareComponentId);
             return View(componentSpecification);
         }
 
@@ -122,8 +122,8 @@ namespace Craft.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ComponentSpecificationCategoryId"] = new SelectList(_context.ComponentSpecificationCategories, "ID", "ID", componentSpecification.ComponentSpecificationCategoryId);
-            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "ID", componentSpecification.HardwareComponentId);
+            ViewData["ComponentSpecificationCategoryId"] = new SelectList(_context.ComponentSpecificationCategories, "ID", "Name", componentSpecification.ComponentSpecificationCategoryId);
+            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "Name", componentSpecification.HardwareComponentId);
             return View(componentSpecification);
         }
 

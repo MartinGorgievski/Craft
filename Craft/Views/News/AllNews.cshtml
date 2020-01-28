@@ -1,0 +1,47 @@
+﻿@model PaginatedList<Craft.Models.Articles>
+@{
+    ViewData["Title"] = "AllNews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>All News</h3>
+<hr />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-2">
+            <a asp-controller="News" asp-action="Detail" asp-route-id="@item.Id">
+                <img src="~/Upload/Images/@item.ImageName" class="img-fluid img-thumbnail" />
+            </a>    
+        </div>
+        <div class="col-md-10">
+            <a asp-controller="News" asp-action="Detail" asp-route-id="@item.Id" style="color: black">
+                <h5>Category: @item.CategoryNews.NameCategory</h5>
+                <h4>@item.Title - <small>@item.DateAdded</small></h4>
+                <div>@Html.Raw(item.MetaDescription)</div>
+            </a>
+        </div>
+        <div class="col-md-12">
+            <hr />
+        </div>
+    }
+    
+    @{
+            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+        }
+        <div class="col-md-12 text-center">
+            <a asp-controller="News" asp-action="AllNews"
+               asp-route-pageid="@(Model.PageIndex - 1)"
+               class="btn btn-outline-secondary @prevDisabled">
+                Previous
+            </a>
+            <a asp-controller="News" asp-action="AllNews"
+               asp-route-pageid="@(Model.PageIndex + 1)"
+               class="btn btn-outline-secondary @nextDisabled">
+                Next
+            </a>
+        </div>
+       
+        
+</div>

@@ -48,7 +48,7 @@ namespace Craft.Controllers
         // GET: Articles/Create
         public IActionResult Create()
         {
-            ViewData["CategoryNewsId"] = new SelectList(_context.CategoryNews, "Id", "Id");
+            ViewData["CategoryNewsId"] = new SelectList(_context.CategoryNews, "Id", "NameCategory");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace Craft.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryNewsId"] = new SelectList(_context.CategoryNews, "Id", "Id", articles.CategoryNewsId);
+            ViewData["CategoryNewsId"] = new SelectList(_context.CategoryNews, "Id", "NameCategory", articles.CategoryNewsId);
             return View(articles);
         }
 
@@ -82,7 +82,7 @@ namespace Craft.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryNewsId"] = new SelectList(_context.CategoryNews, "Id", "Id", articles.CategoryNewsId);
+            ViewData["CategoryNewsId"] = new SelectList(_context.CategoryNews, "Id", "NameCategory", articles.CategoryNewsId);
             return View(articles);
         }
 
@@ -118,7 +118,7 @@ namespace Craft.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryNewsId"] = new SelectList(_context.CategoryNews, "Id", "Id", articles.CategoryNewsId);
+            ViewData["CategoryNewsId"] = new SelectList(_context.CategoryNews, "Id", "NameCategory", articles.CategoryNewsId);
             return View(articles);
         }
 

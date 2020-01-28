@@ -10,7 +10,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table id="myTable" class="table table-striped">
     <thead>
         <tr>
             <th>
@@ -50,9 +50,9 @@
                 @Html.DisplayFor(modelItem => item.ComponentSpecification.AttributeName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a class="d-block" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                <a class="d-block" asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                <a class="d-block" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

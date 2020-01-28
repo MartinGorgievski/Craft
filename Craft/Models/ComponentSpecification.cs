@@ -17,5 +17,7 @@ namespace Craft.Models
 
         public int ComponentSpecificationCategoryId { get; set; }
         public ComponentSpecificationCategory ComponentSpecificationCategory { get; set; }
+
+        public ICollection<HardwareUnitSpecification> HardwareUnitSpecifications { get; set; }
     }
 }

@@ -89,25 +89,12 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="#">Home</a>
+                    <a asp-controller="Home" asp-action="Index">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">CPU</li>
+                <li class="breadcrumb-item active" aria-current="page">@ViewData["ComponentTitle"]</li>
             </ol>
         </nav>
-
-
-        <div class="jumbotron">
-            <h4>Short brief</h4>
-            <div class="">
-                <h5 class="card-title">What is CPU?</h5>
-                <p class="card-text">
-                    A central processing unit (CPU), also called a central processor or main processor, is the electronic circuitry within a computer that carries out the instructions of a computer program by performing the basic arithmetic, logic, controlling, and input/output (I/O) operations specified by the instructions. The computer industry has used the term "central processing unit" at least since the early 1960s.[1] Traditionally, the term "CPU" refers to a processor, more specifically to its processing unit and control unit (CU), distinguishing these core elements of a computer from external components such as main memory and I/O circuitry.[2]
-
-                    The form, design, and implementation of CPUs have changed over the course of their history, but their fundamental operation remains almost unchanged. Principal components of a CPU include the arithmetic logic unit (ALU) that performs arithmetic and logic operations, processor registers that supply operands to the ALU and store the results of ALU operations and a control unit that orchestrates the fetching (from memory) and execution of instructions by directing the coordinated operations of the ALU, registers and other components.
-
-                </p>
-            </div>
-        </div>
+        @await Component.InvokeAsync("DescriptionComponent", new { ComponentId = ViewData["ComponentId"] })
     </div>
     <div class="col-md-2">
         <form id="FilterForm" asp-controller="Component" asp-action="FilterComponents"
@@ -116,8 +103,7 @@
               data-ajax-mode="replace"
               data-ajax-begin="SpinnerStart"
               data-ajax-complete="SpinnerComplite"
-              data-ajax-update="#updateItems"
-              data-ajax-loading-duration ="20000">
+              data-ajax-update="#updateItems">
             @foreach (var item in Model.FilterCategories)
             {
                 <div class="d-block">
@@ -152,7 +138,7 @@
         <div id="cmpIdTEST">
 
         </div>
-        <div class="row" style="background-color: #e9ecef; padding: 15px; border-radius: 5px; margin-bottom: 10px; margin-right:0px; margin-left: 0px">
+        @*<div class="row" style="background-color: #e9ecef; padding: 15px; border-radius: 5px; margin-bottom: 10px; margin-right:0px; margin-left: 0px">
 
             <div class="col-md-4" style="padding-left: 0px; padding-right: 0px; ">
                 <label for="filter">Filter By <span class="fa fa-filter"></span></label>
@@ -166,7 +152,7 @@
                 <label for="filter1">Search by CPU Name <span class="fa fa-search"></span></label>
                 <input name="filter1" class="form-control" placeholder="Name" />
             </div>
-        </div>
+        </div>*@
         <div>
             <div id="spinners" class="d-nonee">
                 <div class="spinner-grow" role="status">

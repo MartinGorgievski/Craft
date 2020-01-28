@@ -48,7 +48,7 @@ namespace Craft.Controllers
         // GET: HardwareUnits/Create
         public IActionResult Create()
         {
-            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "ID");
+            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "Name");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace Craft.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "ID", hardwareUnit.HardwareComponentId);
+            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "Name", hardwareUnit.HardwareComponentId);
             return View(hardwareUnit);
         }
 
@@ -82,7 +82,7 @@ namespace Craft.Controllers
             {
                 return NotFound();
             }
-            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "ID", hardwareUnit.HardwareComponentId);
+            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "Name", hardwareUnit.HardwareComponentId);
             return View(hardwareUnit);
         }
 
@@ -118,7 +118,7 @@ namespace Craft.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "ID", hardwareUnit.HardwareComponentId);
+            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "Name", hardwareUnit.HardwareComponentId);
             return View(hardwareUnit);
         }
 

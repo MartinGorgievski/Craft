@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_CmsLayout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Articles</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table id="myTable" class="table table-striped">
     <thead>
         <tr>
             <th>
@@ -19,9 +19,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.ImageName)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descriprion)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.MetaDescription)
             </th>
@@ -53,11 +51,10 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
+                <img src="~/Upload/Images/@item.ImageName" style="width: 75px" />
                 @Html.DisplayFor(modelItem => item.ImageName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descriprion)
-            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.MetaDescription)
             </td>
@@ -77,12 +74,12 @@
                 @Html.DisplayFor(modelItem => item.Author)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CategoryNews.Id)
+                @Html.DisplayFor(modelItem => item.CategoryNews.NameCategory)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a class="d-block" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                <a class="d-block" asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                <a class="d-block" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }
