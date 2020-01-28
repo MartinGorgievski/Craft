@@ -4,14 +4,16 @@ using Craft.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Craft.Migrations
 {
     [DbContext(typeof(CraftMyPcContext))]
-    partial class CraftMyPcContextModelSnapshot : ModelSnapshot
+    [Migration("20200127171717_AddedFK")]
+    partial class AddedFK
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,6 +81,8 @@ namespace Craft.Migrations
 
                     b.Property<DateTime>("DateAdded");
 
+                    b.Property<int>("FilterComponentId");
+
                     b.Property<int>("HardwareComponentId");
 
                     b.Property<bool>("Primary");
@@ -86,6 +90,8 @@ namespace Craft.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("ComponentSpecificationCategoryId");
+
+                    b.HasIndex("FilterComponentId");
 
                     b.HasIndex("HardwareComponentId");
 
@@ -113,13 +119,9 @@ namespace Craft.Migrations
 
                     b.Property<bool>("Active");
 
-                    b.Property<int>("HardwareComponentId");
-
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("HardwareComponentId");
 
                     b.ToTable("FilterCategories");
                 });
@@ -193,8 +195,6 @@ namespace Craft.Migrations
 
                     b.Property<int>("ComponentSpecificationId");
 
-                    b.Property<int>("FilterComponentId");
-
                     b.Property<int>("HardwareUnitId");
 
                     b.Property<string>("ShortInfo");
@@ -202,8 +202,6 @@ namespace Craft.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ComponentSpecificationId");
-
-                    b.HasIndex("FilterComponentId");
 
                     b.HasIndex("HardwareUnitId");
 
@@ -225,16 +223,13 @@ namespace Craft.Migrations
                         .HasForeignKey("ComponentSpecificationCategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
 
+                    b.HasOne("Craft.Models.FilterComponent", "FilterComponent")
+                        .WithMany("ComponentSpecifications")
+                        .HasForeignKey("FilterComponentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("Craft.Models.HardwareComponent", "HardwareComponent")
                         .WithMany("ComponentSpecifications")
-                        .HasForeignKey("HardwareComponentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Craft.Models.FilterCategory", b =>
-                {
-                    b.HasOne("Craft.Models.HardwareComponent", "HardwareComponent")
-                        .WithMany("FilterCategories")
                         .HasForeignKey("HardwareComponentId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -258,13 +253,8 @@ namespace Craft.Migrations
             modelBuilder.Entity("Craft.Models.HardwareUnitSpecification", b =>
                 {
                     b.HasOne("Craft.Models.ComponentSpecification", "ComponentSpecification")
-                        .WithMany()
+                        .WithMany("HardwareUnitSpecifications")
                         .HasForeignKey("ComponentSpecificationId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Craft.Models.FilterComponent", "FilterComponent")
-                        .WithMany("HardwareUnitSpecification")
-                        .HasForeignKey("FilterComponentId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Craft.Models.HardwareUnit", "HardwareUnit")

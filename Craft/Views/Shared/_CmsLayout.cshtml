@@ -19,84 +19,60 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Craft My PC</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="HardwareComponents" asp-action="Index">
-                        Hardware Components
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="ComponentSpecifications" asp-action="Index">
-                        Hardware Specifications
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="HardwareUnitSpecifications" asp-action="Index">
-                        Hardware Unit Specifications
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="HardwareUnits" asp-action="Index">
-                        Hardware Units
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="FilterCategories" asp-action="Index">
-                        Filter Categories
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="FilterComponents" asp-action="Index">
-                        Filter Components
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="ComponentSpecificationCategories" asp-action="Index">
-                        Component Specification Categories
-                    </a>
-                </li>
-                @*<li class="nav-item">
-            <a class="nav-link" asp-controller="Articles" asp-action="Index">
-                Articles
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <a class="navbar-brand" asp-controller="HardwareComponents" asp-action="Index">
+                <i class="fa fa-home fa-2x"></i>
             </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-controller="CategoryNews" asp-action="Index">
-                Articles Category
+            <hr style="background-color: #717070; margin-top: 5px; margin-bottom: 5px" />
+            <a class="nav-link" asp-controller="HardwareComponents" asp-action="Index">
+                <i class="fa fa-table"></i>
+                Hardware Components
             </a>
-        </li>*@
-                @*<li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
+            <hr style="background-color: #717070; margin-top: 5px; margin-bottom: 5px" />
+            <a class="nav-link" asp-controller="ComponentSpecifications" asp-action="Index">
+                <i class="fa fa-table"></i>
+                Hardware Specifications
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </li>*@
-            </ul>
-            @*<form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>*@
+            <hr style="background-color: #717070; margin-top: 5px; margin-bottom: 5px" />
+            <a class="nav-link" asp-controller="HardwareUnitSpecifications" asp-action="Index">
+                <i class="fa fa-table"></i>
+                Hardware Unit Spec.
+            </a>
+            <hr style="background-color: #717070; margin-top: 5px; margin-bottom: 5px" />
+            <a class="nav-link" asp-controller="HardwareUnits" asp-action="Index">
+                <i class="fa fa-table"></i>
+                Hardware Units
+            </a>
+            <hr style="background-color: #717070; margin-top: 5px; margin-bottom: 5px" />
+            <a class="nav-link" asp-controller="FilterCategories" asp-action="Index">
+                <i class="fa fa-table"></i>
+                Filter Categories
+            </a>
+            <hr style="background-color: #717070; margin-top: 5px; margin-bottom: 5px" />
+            <a class="nav-link" asp-controller="FilterComponents" asp-action="Index">
+                <i class="fa fa-table"></i>
+                Filter Components
+            </a>
+            <hr style="background-color: #717070;  margin-top: 5px; margin-bottom: 5px " />
+            <a class="nav-link" asp-controller="ComponentSpecificationCategories" asp-action="Index">
+                <i class="fa fa-table"></i>
+                Component Specific. Cat.
+            </a>
+            <hr style="background-color: #717070; margin-top: 5px; margin-bottom: 5px" />
         </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="openbtn " onclick="openNav()">☰ Menu</button>
+            <a class="navbar-brand " asp-controller="HardwareComponents" asp-action="Index">Craft My PC</a>
         </nav>
     </header>
+
     <div class="container">
         <partial name="_CookieConsentPartial" />
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        </div>
+        <main id="main" role="main" class="pb-3">
+            @RenderBody()
+        </main>
+
     </div>
 
     <footer class="border-top footer text-muted">
@@ -124,7 +100,17 @@
         </script>
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
 
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

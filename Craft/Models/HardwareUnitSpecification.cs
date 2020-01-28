@@ -13,6 +13,9 @@ namespace Craft.Models
         public string AttributeValue { get; set; }
         public string ShortInfo { get; set; }
 
+        public int FilterComponentId { get; set; }
+        public FilterComponent FilterComponent { get; set; }
+
         public int HardwareUnitId { get; set; }
         public HardwareUnit HardwareUnit { get; set; }
 

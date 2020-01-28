@@ -5,28 +5,28 @@
     Layout = "~/Views/Shared/_CmsLayout.cshtml";
 }
 
-<h1>Hardware unit</h1>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table table-light table-striped">
+<table class="table">
     <thead>
         <tr>
             <th>
-                Image
+                @Html.DisplayNameFor(model => model.ImageName)
             </th>
             <th>
-                Title
+                @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
-                Active
+                @Html.DisplayNameFor(model => model.Active)
             </th>
             <th>
-                Url Name
+                @Html.DisplayNameFor(model => model.UrlName)
             </th>
             <th>
-                Type
+                @Html.DisplayNameFor(model => model.HardwareComponent)
             </th>
             <th></th>
         </tr>
@@ -35,7 +35,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                <img src="~/Upload/Images/@item.ImageName" style="width: 75px; display: block" />
+                <img src="~/Upload/Images/@item.ImageName" style="width: 75px" />
                 @Html.DisplayFor(modelItem => item.ImageName)
             </td>
             <td>
@@ -48,7 +48,7 @@
                 @Html.DisplayFor(modelItem => item.UrlName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HardwareComponent.Name)
+                @Html.DisplayFor(modelItem => item.HardwareComponent.ID)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

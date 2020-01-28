@@ -22,7 +22,8 @@ namespace Craft.Controllers
         // GET: FilterCategories
         public async Task<IActionResult> Index()
         {
-            return View(await _context.FilterCategories.ToListAsync());
+            var craftMyPcContext = _context.FilterCategories.Include(f => f.HardwareComponent);
+            return View(await craftMyPcContext.ToListAsync());
         }
 
         // GET: FilterCategories/Details/5
@@ -34,6 +35,7 @@ namespace Craft.Controllers
             }
 
             var filterCategory = await _context.FilterCategories
+                .Include(f => f.HardwareComponent)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (filterCategory == null)
             {
@@ -46,6 +48,7 @@ namespace Craft.Controllers
         // GET: FilterCategories/Create
         public IActionResult Create()
         {
+            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "ID");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace Craft.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Active")] FilterCategory filterCategory)
+        public async Task<IActionResult> Create([Bind("Id,Name,Active,HardwareComponentId")] FilterCategory filterCategory)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +65,7 @@ namespace Craft.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "ID", filterCategory.HardwareComponentId);
             return View(filterCategory);
         }
 
@@ -78,6 +82,7 @@ namespace Craft.Controllers
             {
                 return NotFound();
             }
+            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "ID", filterCategory.HardwareComponentId);
             return View(filterCategory);
         }
 
@@ -86,7 +91,7 @@ namespace Craft.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Active")] FilterCategory filterCategory)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Active,HardwareComponentId")] FilterCategory filterCategory)
         {
             if (id != filterCategory.Id)
             {
@@ -113,6 +118,7 @@ namespace Craft.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["HardwareComponentId"] = new SelectList(_context.HardwareComponents, "ID", "ID", filterCategory.HardwareComponentId);
             return View(filterCategory);
         }
 
@@ -125,6 +131,7 @@ namespace Craft.Controllers
             }
 
             var filterCategory = await _context.FilterCategories
+                .Include(f => f.HardwareComponent)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (filterCategory == null)
             {

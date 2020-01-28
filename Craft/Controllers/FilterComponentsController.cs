@@ -22,7 +22,7 @@ namespace Craft.Controllers
         // GET: FilterComponents
         public async Task<IActionResult> Index()
         {
-            return View(await _context.FilterComponents.ToListAsync());
+            return View(await _context.FilterComponents.Include(s => s.FilterCategory).ToListAsync());
         }
 
         // GET: FilterComponents/Details/5
@@ -34,6 +34,7 @@ namespace Craft.Controllers
             }
 
             var filterComponent = await _context.FilterComponents
+                .Include(s => s.FilterCategory)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (filterComponent == null)
             {
@@ -46,6 +47,7 @@ namespace Craft.Controllers
         // GET: FilterComponents/Create
         public IActionResult Create()
         {
+            ViewData["FilterCategoryId"] = new SelectList(_context.FilterCategories, "Id", "Name");
             return View();
         }
 
@@ -54,7 +56,7 @@ namespace Craft.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name")] FilterComponent filterComponent)
+        public async Task<IActionResult> Create([Bind("ID,Name,FilterCategoryId")] FilterComponent filterComponent)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +64,7 @@ namespace Craft.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["FilterCategoryId"] = new SelectList(_context.FilterCategories, "Id", "Name");
             return View(filterComponent);
         }
 
@@ -78,6 +81,7 @@ namespace Craft.Controllers
             {
                 return NotFound();
             }
+            ViewData["FilterCategoryId"] = new SelectList(_context.FilterCategories, "Id", "Name");
             return View(filterComponent);
         }
 
@@ -86,7 +90,7 @@ namespace Craft.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name")] FilterComponent filterComponent)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,FilterCategoryId")] FilterComponent filterComponent)
         {
             if (id != filterComponent.ID)
             {
@@ -113,6 +117,7 @@ namespace Craft.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["FilterCategoryId"] = new SelectList(_context.FilterCategories, "Id", "Name");
             return View(filterComponent);
         }
 
@@ -125,6 +130,7 @@ namespace Craft.Controllers
             }
 
             var filterComponent = await _context.FilterComponents
+                .Include(s => s.FilterCategory)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (filterComponent == null)
             {

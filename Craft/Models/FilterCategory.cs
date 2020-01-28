@@ -11,6 +11,9 @@ namespace Craft.Models
         public string Name { get; set; }
         public bool Active { get; set; }
 
+        public int HardwareComponentId { get; set; }
+        public HardwareComponent HardwareComponent { get; set; }
+
         public ICollection<FilterComponent> FilterComponents { get; set; }
     }
 }

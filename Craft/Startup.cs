@@ -37,6 +37,7 @@ namespace Craft
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddTransient<IHardwareUnit, HardwareUnitServices>();
             services.AddTransient<IHardwareComponent, HardwareComponentServices>();
+            services.AddTransient<ICategoryFilter, FliterCategoriesServices>();
 
             services.AddDbContext<CraftMyPcContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("LocalTestServer")));

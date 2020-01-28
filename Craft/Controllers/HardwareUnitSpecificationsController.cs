@@ -22,7 +22,7 @@ namespace Craft.Controllers
         // GET: HardwareUnitSpecifications
         public async Task<IActionResult> Index()
         {
-            var craftMyPcContext = _context.HardwareUnitSpecification.Include(h => h.ComponentSpecification).Include(h => h.HardwareUnit);
+            var craftMyPcContext = _context.HardwareUnitSpecification.Include(h => h.ComponentSpecification).Include(h => h.FilterComponent).Include(h => h.HardwareUnit);
             return View(await craftMyPcContext.ToListAsync());
         }
 
@@ -36,6 +36,7 @@ namespace Craft.Controllers
 
             var hardwareUnitSpecification = await _context.HardwareUnitSpecification
                 .Include(h => h.ComponentSpecification)
+                .Include(h => h.FilterComponent)
                 .Include(h => h.HardwareUnit)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (hardwareUnitSpecification == null)
@@ -50,6 +51,7 @@ namespace Craft.Controllers
         public IActionResult Create()
         {
             ViewData["ComponentSpecificationId"] = new SelectList(_context.ComponentSpecifications, "ID", "ID");
+            ViewData["FilterComponentId"] = new SelectList(_context.FilterComponents, "ID", "ID");
             ViewData["HardwareUnitId"] = new SelectList(_context.HardwareUnits, "Id", "Id");
             return View();
         }
@@ -59,7 +61,7 @@ namespace Craft.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AttributeValue,ShortInfo,HardwareUnitId,ComponentSpecificationId")] HardwareUnitSpecification hardwareUnitSpecification)
+        public async Task<IActionResult> Create([Bind("Id,AttributeValue,ShortInfo,FilterComponentId,HardwareUnitId,ComponentSpecificationId")] HardwareUnitSpecification hardwareUnitSpecification)
         {
             if (ModelState.IsValid)
             {
@@ -68,6 +70,7 @@ namespace Craft.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ComponentSpecificationId"] = new SelectList(_context.ComponentSpecifications, "ID", "ID", hardwareUnitSpecification.ComponentSpecificationId);
+            ViewData["FilterComponentId"] = new SelectList(_context.FilterComponents, "ID", "ID", hardwareUnitSpecification.FilterComponentId);
             ViewData["HardwareUnitId"] = new SelectList(_context.HardwareUnits, "Id", "Id", hardwareUnitSpecification.HardwareUnitId);
             return View(hardwareUnitSpecification);
         }
@@ -86,6 +89,7 @@ namespace Craft.Controllers
                 return NotFound();
             }
             ViewData["ComponentSpecificationId"] = new SelectList(_context.ComponentSpecifications, "ID", "ID", hardwareUnitSpecification.ComponentSpecificationId);
+            ViewData["FilterComponentId"] = new SelectList(_context.FilterComponents, "ID", "ID", hardwareUnitSpecification.FilterComponentId);
             ViewData["HardwareUnitId"] = new SelectList(_context.HardwareUnits, "Id", "Id", hardwareUnitSpecification.HardwareUnitId);
             return View(hardwareUnitSpecification);
         }
@@ -95,7 +99,7 @@ namespace Craft.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,AttributeValue,ShortInfo,HardwareUnitId,ComponentSpecificationId")] HardwareUnitSpecification hardwareUnitSpecification)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,AttributeValue,ShortInfo,FilterComponentId,HardwareUnitId,ComponentSpecificationId")] HardwareUnitSpecification hardwareUnitSpecification)
         {
             if (id != hardwareUnitSpecification.Id)
             {
@@ -123,6 +127,7 @@ namespace Craft.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ComponentSpecificationId"] = new SelectList(_context.ComponentSpecifications, "ID", "ID", hardwareUnitSpecification.ComponentSpecificationId);
+            ViewData["FilterComponentId"] = new SelectList(_context.FilterComponents, "ID", "ID", hardwareUnitSpecification.FilterComponentId);
             ViewData["HardwareUnitId"] = new SelectList(_context.HardwareUnits, "Id", "Id", hardwareUnitSpecification.HardwareUnitId);
             return View(hardwareUnitSpecification);
         }
@@ -137,6 +142,7 @@ namespace Craft.Controllers
 
             var hardwareUnitSpecification = await _context.HardwareUnitSpecification
                 .Include(h => h.ComponentSpecification)
+                .Include(h => h.FilterComponent)
                 .Include(h => h.HardwareUnit)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (hardwareUnitSpecification == null)

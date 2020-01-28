@@ -13,7 +13,7 @@ namespace Craft.Models
         public DateTime DateAdded { get; set; }
         public DateTime DateModified { get; set; }
 
-       
+        public ICollection<FilterCategory> FilterCategories { get; set; }
         public ICollection<ComponentSpecification> ComponentSpecifications { get; set; }
        // public ICollection<HardwareUnit> HardwareUnits { get; set; }
     }

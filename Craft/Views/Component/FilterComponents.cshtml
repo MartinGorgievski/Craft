@@ -1,0 +1,53 @@
+﻿@model IEnumerable<HardwareUnit>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@foreach (var item in Model)
+{
+    <div class="col-md-4 col-lg-4">
+        <div class="card">
+            <a asp-controller="Component" asp-action="DetailInformation" asp-route-id="@item.UrlName">
+                <img src="~/Upload/Images/@item.ImageName" style="padding: 10px" class="card-img-top" alt="@item.ImageName">
+            </a>
+            <div class="card-body">
+                <h5 class="card-title">
+                    @item.Title
+                </h5>
+                <div class="card-text">
+                    <table class="w-100">
+                        @foreach (var item1 in item.HardwareUnitSpecifications)
+                        {
+                            if (item1.ComponentSpecification.Primary)
+                            {
+                                <tr class="tr-style">
+                                    <th class="th-style">@item1.ComponentSpecification.AttributeName</th>
+                                    <td class="td-style text-center">@item1.AttributeValue</td>
+                                </tr>
+                            }
+
+                        }
+                    </table>
+                </div>
+                @*<div class="w-100 text-center">
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Add on board" class="btn btn-outline-dark add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-plus "></i>
+                        </a>
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Quick preview" class="btn btn-outline-primary add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-search"></i>
+                        </a>
+
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Full preview" class="btn btn-outline-danger add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-list-alt"></i>
+                        </a>
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Compare" class="btn btn-outline-warning add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-exchange"></i>
+                        </a>
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Add to favourites" class="btn btn-outline-dark add-on-board-btn w-20" style="border-radius: 50%">
+                            <i class="fa fa-heart"></i>
+                        </a>
+                    </div>*@
+
+            </div>
+        </div>
+    </div>
+}

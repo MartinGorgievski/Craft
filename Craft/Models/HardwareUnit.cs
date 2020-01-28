@@ -12,6 +12,7 @@ namespace Craft.Models
         public string Title { get; set; }
         public bool Active { get; set; }
         public string UrlName { get; set; }
+
         public int HardwareComponentId { get; set; }
         public HardwareComponent HardwareComponent { get; set; }
 
